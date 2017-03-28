@@ -201,4 +201,5 @@ function sendWatchlistNoPermission(res, type) {
         errorCode: 'NOT_WATCHLIST_OWNER',
         message: `Watchlist can only be ${type} by its owner.`
     });
-};
+}
+

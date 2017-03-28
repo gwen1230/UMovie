@@ -2,21 +2,20 @@
  * Created by gwenael on 28/03/2017.
  */
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 var modelHelpers = require('./modelHelpers.js');
 
-
 var reviewSchema = mongoose.Schema({
-    id_user: 'string',
-    id_film: 'string',
-    commentaire: 'string',
-    note: 'number',
-    date: 'date'
+    user_id: String,
+    movie_id: String,
+    commentaire: String,
+    note: Number,
+    date: Date,
+    type: String
 });
 
 reviewSchema.method('toJSON', modelHelpers.toJSON);
 
 var Review = mongoose.model('Review', reviewSchema);
 
-exports.schema = watchlistSchema;
-exports.model = Watchlist;
+exports.schema = reviewSchema;
+exports.model = Review;

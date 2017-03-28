@@ -94,7 +94,11 @@ app.delete('/watchlists/:id/movies/:trackId', authentication.isAuthenticated, wa
 app.put('/watchlists/:id', authentication.isAuthenticated, watchlist.updateWatchlist);
 app.delete('/watchlists/:id', authentication.isAuthenticated, watchlist.removeWatchlist);
 
-app.get('/review/add', review.addReview);
+app.post('/review/', authentication.isAuthenticated, review.addReview);
+app.get('/review/film/:id', authentication.isAuthenticated, review.getReviewByFilmId);
+app.get('/review/tvshow/:id', authentication.isAuthenticated, review.getReviewByTvshowId);
+app.delete('/review/:id', authentication.isAuthenticated, review.deleteReviewById);
+app.put('/review/:id', authentication.isAuthenticated, review.updateReview);
 
 // Unsecure API. Useful for the second release.
 
