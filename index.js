@@ -20,6 +20,7 @@ var signup = require('./routes/signup');
 var status = require('./routes/status');
 var user = require('./routes/user');
 var watchlist = require('./routes/watchlists');
+var review = require('./routes/review');
 
 var app = express();
 var corsOptions = {
@@ -92,6 +93,8 @@ app.post('/watchlists/:id/movies', authentication.isAuthenticated, watchlist.add
 app.delete('/watchlists/:id/movies/:trackId', authentication.isAuthenticated, watchlist.removeMovieFromWatchlist);
 app.put('/watchlists/:id', authentication.isAuthenticated, watchlist.updateWatchlist);
 app.delete('/watchlists/:id', authentication.isAuthenticated, watchlist.removeWatchlist);
+
+app.get('/review/add', review.addReview);
 
 // Unsecure API. Useful for the second release.
 
