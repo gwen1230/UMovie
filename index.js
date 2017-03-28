@@ -8,7 +8,7 @@ var cors = require('cors');
 var passport = require('passport');
 
 var mongoose = require('mongoose');
-var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/ubeat';
+var mongoUri = 'mongodb://nuclearMovie:TuuuD543@37.59.63.169:13647/umovie';
 mongoose.connect(mongoUri);
 
 var authentication = require('./middleware/authentication');
@@ -125,5 +125,5 @@ app.delete('/unsecure/watchlists/:id/movies/:trackId', watchlist.removeMovieFrom
 app.put('/unsecure/watchlists/:id', watchlist.updateWatchlist);
 app.delete('/unsecure/watchlists/:id', watchlist.removeWatchlistUnsecure);
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3147;
 app.listen(port);
