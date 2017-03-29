@@ -3,29 +3,33 @@
  */
 
 var Review = require('../models/review').model;
+var User = require('../models/user').model;
+
 
 exports.addReview = function (req, res) {
     console.log('addReview');
     console.log(req.body);
     if (req.body) {
-        var review = new Review({
-            movie_id: req.body.film_id,
-            user_id: req.body.user_id,
-            commentaire: req.body.commentaire,
-            note: req.body.note,
-            date: Date.now(),
-            type: req.body.type
-        });
-        review.save(function (err) {
-            console.log(err);
-        });
-        res.status(200).send(review);
+        User.findById(req.user.id, function (err, user) {
+            var review = new Review({
+                owner: user.toJSON(),
+                movie_id: req.body.film_id,
+                commentaire: req.body.commentaire,
+                note: req.body.note,
+                date: Date.now(),
+                type: req.body.type
+            });
+            review.save(function (err) {
+                console.log(err);
+            });
+            res.status(200).send(review);
+        })
     }
     // Voir code erreur
 };
 
 exports.getReviewByFilmId = function (req, res) {
-    Review.find({movie_id: req.params.id, type: 'movie'}, function (err, reviews) {
+    Review.find({movie_id: req.params.id, type: 'movie'}).lean().exec(function (err, reviews) {
         res.status(200).send(reviews);
     });
 };

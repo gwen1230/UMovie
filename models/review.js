@@ -5,7 +5,11 @@ var mongoose = require('mongoose');
 var modelHelpers = require('./modelHelpers.js');
 
 var reviewSchema = mongoose.Schema({
-    user_id: String,
+    owner: {
+        id: String,
+        email: String,
+        name: String
+    },
     movie_id: String,
     commentaire: String,
     note: Number,
