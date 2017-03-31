@@ -29,13 +29,13 @@ exports.addReview = function (req, res) {
 };
 
 exports.getReviewByFilmId = function (req, res) {
-    Review.find({movie_id: req.params.id, type: 'movie'}).lean().exec(function (err, reviews) {
+    Review.find({movie_id: req.params.id, type: 'movie'}).sort('-date').exec(function (err, reviews) {
         res.status(200).send(reviews);
     });
 };
 
 exports.getReviewByTvshowId = function (req, res) {
-    Review.find({movie_id: req.params.id, type: 'tvshow'}, function (err, reviews) {
+    Review.find({movie_id: req.params.id, type: 'tvshow'}).sort('-date').exec(function (err, reviews) {
         res.status(200).send(reviews);
     });
 };
