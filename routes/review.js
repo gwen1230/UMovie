@@ -14,8 +14,8 @@ exports.addReview = function (req, res) {
             var review = new Review({
                 owner: user.toJSON(),
                 movie_id: req.body.film_id,
-                commentaire: req.body.commentaire,
-                note: req.body.note,
+                comment: req.body.comment,
+                rating: req.body.rating,
                 date: Date.now(),
                 type: req.body.type
             });
@@ -56,8 +56,8 @@ exports.updateReview = function (req, res) {
         if (!err) {
             if (review) {
                 if (req.user.id === review.user_id) {
-                    review.note = req.body.note;
-                    review.commentaire = req.body.commentaire;
+                    review.rating = req.body.rating;
+                    review.comment = req.body.comment;
                     review.date = Date.now();
                     review.save();
                     res.status(200).send(review);

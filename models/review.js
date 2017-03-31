@@ -11,8 +11,8 @@ var reviewSchema = mongoose.Schema({
         name: String
     },
     movie_id: String,
-    commentaire: String,
-    note: Number,
+    comment: String,
+    rating: Number,
     date: Date,
     type: String
 });
