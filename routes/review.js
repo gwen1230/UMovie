@@ -13,7 +13,7 @@ exports.addReview = function (req, res) {
         User.findById(req.user.id, function (err, user) {
             var review = new Review({
                 owner: user.toJSON(),
-                movie_id: req.body.film_id,
+                movie_id: req.body.movie_id,
                 comment: req.body.comment,
                 rating: req.body.rating,
                 date: Date.now(),
