@@ -95,7 +95,7 @@ app.put('/watchlists/:id', authentication.isAuthenticated, watchlist.updateWatch
 app.delete('/watchlists/:id', authentication.isAuthenticated, watchlist.removeWatchlist);
 
 app.post('/review/', authentication.isAuthenticated, review.addReview);
-app.get('/review/film/:id', authentication.isAuthenticated, review.getReviewByFilmId);
+app.get('/review/movie/:id', authentication.isAuthenticated, review.getReviewByFilmId);
 app.get('/review/tvshow/:id', authentication.isAuthenticated, review.getReviewByTvshowId);
 app.delete('/review/:id', authentication.isAuthenticated, review.deleteReviewById);
 app.put('/review/:id', authentication.isAuthenticated, review.updateReview);
